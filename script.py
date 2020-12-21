@@ -73,7 +73,7 @@ text_classifier.fit(xTrain, yTrain)
 # print(xTest)
 # # print(yTrain)
 
-# predictions = text_classifier.predict(xTest)
+predictions = text_classifier.predict(xTest)
 
 # print(predictions)
 
