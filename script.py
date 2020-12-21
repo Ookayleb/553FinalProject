@@ -15,19 +15,20 @@ numClass = int(input())
 print("Test/train split: 0.", end="")
 traintestSplit = float("0." + input())
 
-print((traintestSplit))
+print("{}% Testing set".format(traintestSplit * 100))
 
 
 # 1 - Negative
 # 2 - Positive
 
 df = pd.read_csv("Train.csv")
+#from https://www.kaggle.com/akash14/product-sentiment-classification
 
 #Remove rows that have 0 or 3 in the Sentiment column, we are not interested in these
 df = df[df['Sentiment'] > 0]
 df = df[df['Sentiment'] < 3]
 
-print(df)
+# print(df)
 
 #Split our dataframe into two, one containing negative sentiment and one containing positive.
 negDF = df[df['Sentiment'] == 1]
@@ -36,6 +37,8 @@ posDF = df[df['Sentiment'] == 2]
 
 sizePos	= len(posDF)
 sizeNeg	= len(negDF)
+
+print("\nNumber of Positive Tweets: {}\nNumber of Negative Tweets: {}".format(sizePos, sizeNeg))
 
 
 labels = 'Positive', 'Negative'
@@ -77,6 +80,7 @@ predictions = text_classifier.predict(xTest)
 
 # print(predictions)
 
-print(confusion_matrix(yTest,predictions))
+# print(confusion_matrix(yTest,predictions))
+print()
 print(classification_report(yTest,predictions))
-print(accuracy_score(yTest, predictions))
+print("\nFinal Accuracy: {}%".format(accuracy_score(yTest, predictions) * 100))
