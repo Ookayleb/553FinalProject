@@ -64,6 +64,10 @@ sentances = df["Product_Description"].values
 vectorizer = TfidfVectorizer (max_features=2500, min_df=7, max_df=0.8, stop_words=stopwords.words('english'))
 sentancesTFIDF = vectorizer.fit_transform(sentances).toarray()
 
+# print(sentancesTFIDF)
+# print(len(sentancesTFIDF))
+# testing = vectorizer.fit_transform(["Hello"])
+# print(testing)
 
 classLabel = df.loc[:, "Sentiment"].values
 
@@ -83,4 +87,4 @@ predictions = text_classifier.predict(xTest)
 # print(confusion_matrix(yTest,predictions))
 print()
 print(classification_report(yTest,predictions))
-print("\nFinal Accuracy: {}%".format(accuracy_score(yTest, predictions) * 100))
+print("Final Accuracy: {}%".format(accuracy_score(yTest, predictions) * 100))
